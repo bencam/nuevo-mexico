@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo M&eacute;xico</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Raleway:400,700" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="welcome-div row">
+            <header class="welcome-header text-center">
+                <h1><a href="{{ url_for('showPlaceTypes') }}">Nuevo M&eacute;xico</a></h1>
+                <h4>A simple app to help you find the best of New Mexico</h4>
+            </header>
+        </div>
+
+        <div class="welcome-img-row row">
+            <div class="welcome-img col-xs-11 col-sm-9 col-md-7 ctr-block">
+                <p><a href="{{ url_for('showPlaceTypes') }}"><img src="static/img/welcome_img.jpeg" alt="Photo of New Mexico"></a></p>
+            </div>
+        </div>
+                
+        <div class="get-started-row">
+            <div class="get-started text-center">
+                <p><a href="{{ url_for('showPlaceTypes') }}">Get Started</a></p>
+            </div>
+        </div>
+
+        <footer class="welcome-footer">
+            <div class="social">
+                <a href="https://www.facebook.com/" class="brandico-facebook-rect"></a>
+                <a href="https://twitter.com/" class="brandico-twitter-bird"></a>
+                <a href="https://www.instagram.com" class="brandico-instagram-filled"></a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

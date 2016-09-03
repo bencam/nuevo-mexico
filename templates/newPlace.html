@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="action-message-row row">
+  <div class="action-message col-xs-11 col-sm-9 col-md-8 ctr-block">
+    <p>To create a new place to visit in the <strong>{{ placeType.name }}</strong> category, fill out the form below and click the create button.</p>
+  </div>
+</div>
+
+<div class="action-form-row row">
+  <div class="action-form col-xs-11 col-sm-9 col-md-8 ctr-block">
+    <form action="{{ url_for('newPlace', placeType_id = placeType.id) }}" method="POST">
+      <input type="text" size="40" name="name" placeholder="Name"><br>
+      <input type="text" size="40" name="description" placeholder="Description"><br>
+      <input type="radio" name="location" value="Albuquerque area"> Albuquerque area<br>
+      <input type="radio" name="location" value="Northern New Mexico"> Northern New Mexico<br>
+      <input type="radio" name="location" value="Santa Fe area"> Santa Fe area<br>
+      <input type="radio" name="location" value="Southern New Mexico"> Southern New Mexico<br>
+      <input type="text" size="40" name="price" placeholder="Price"><br>
+      <input type="text" size="40" name="link" placeholder="Link"><br><br>
+      <button type="submit" class="btn btn-default green-button" role="button">CREATE</button> <a href="{{ url_for('showPlaces', placeType_id = placeType.id) }}" class="btn btn-default" role="button">CANCEL</a>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

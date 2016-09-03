@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="action-message-row row">
+  <div class="action-message col-xs-11 col-sm-9 col-md-8 ctr-block">
+    <p>To edit the name of <strong>{{ placeType.name }}</strong>, type the revised name in the form below and click the update button.</p>
+  </div>
+</div>
+
+<div class="action-form-row row">
+  <div class="action-form col-xs-11 col-sm-9 col-md-8 ctr-block">
+    <form action="{{ url_for('editPlaceType', placeType_id = placeType.id) }}" method="POST">
+      <input type="text" size ="40" name="name" value="{{ placeType.name }}"><br><br>
+      <button type="submit" class="btn btn-default green-button" role="button">UPDATE</button> <a href="{{ url_for('showPlaces', placeType_id = placeType.id) }}" class="btn btn-default" role="button">CANCEL</a>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

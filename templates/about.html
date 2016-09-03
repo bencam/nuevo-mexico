@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="about-info-div row">
+  <div class="about-info col-xs-11 col-sm-9 col-md-7 ctr-block">
+    <p>Nuevo M&eacute;xico is a small and simple application designed to help people find the best New Mexico offers. While the app does not provide extensive information regarding travel options and tourist spots in New Mexico, it does offer tourists (and residents) a good place to start exploring.</p>
+    <p>For those who want to do a little homework before they travel or who are simply interested in learning more about New Mexico, we suggest digging into a few books that are based in the Land of Enchantment. Start with Willa Cather's beautifully serene <i>Death Comes for the Archbishop</i> (1927), a tale set in the 1800s that follows the efforts and experiences of a Catholic bishop and priest in what was then known as the Territory of New Mexico. No experience of New Mexico is complete without reading this book. You may then want to try Rudolfo Anaya's <i>Bless Me, Ultima</i> (1972) or <i>House Made of Dawn</i> (1968) by N. Scott Momaday. For those inclined toward crime fiction, Tony Hillerman's Navajo Tribal Police series (1970 - 2006) of mystery novels may be of interest. Willa Cather's <i>The Professor's House</i> (1925) is another classic novel set in New Mexico.</p>
+  </div>
+</div>
+
+<div class="about-view-list-row row">
+  <div class="about-view-list col-xs-11 col-sm-9 col-md-7 text-center ctr-block">
+    <p><a href="{{ url_for('showPlaceTypes') }}">View</a> a list of all the types of places to visit in New Mexico</p>
+  </div>
+</div>
+
+{% endblock %}

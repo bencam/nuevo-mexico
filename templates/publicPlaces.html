@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="placetype-creator-row row">
+  <div class="placetype-name col-xs-10 col-sm-10">
+    <p>{{ placeType.name }}</p>
+  </div>
+  <div class="creator-img-row col-xs-2 col-sm-2">
+    <img class="creator-img" src="{{ creator.picture }}">
+    <p class="img-caption text-center">Created by: {{ creator.name }}</p>
+  </div>
+</div>
+
+
+<!-- ADD TEXT WHEN NO PLACES IN A PLACE TYPE -->
+<div class="no-places-row row">
+  <div class="no-places">
+    {% if not places: %}
+      <p><strong>There are no places to visit in this category.</strong></p>
+    {% endif %}
+  </div>
+</div>
+<!-- END TEXT WHEN NO PLACES IN A PLACE TYPE -->
+
+
+<!-- ADD EXTRA INFO FOR SPECIFIC PLACE TYPES -->
+<div class="extra-info-row row">
+  <div class="extra-info col-sm-9 col-md-8 ctr-block">
+    {% if placeType.name == 'Restaurants': %}
+      <p>Perhaps you're wondering why Nuevo M&eacute;xico only lists New Mexican food? It's because if you're in New Mexico, you really should eat New Mexican food. You can't get it anywhere else, and much more importantly, it's some of the best food in the world. (If you're really intent on eating food like pizza, at least try it with green chile on top. Or try a hamburger with thick slices of roasted green chile.) When you order New Mexican food, you'll be asked if you would like red or green chile with your dish. Both are very good. And if you can't decide which one you want, ask for Christmas (both red and green).</p>
+
+    {% elif placeType.name == 'Pueblos': %}
+      <p>There are 19 pueblos in New Mexico and three reservations (with the Navajo Nation being the largest). See <a href="http://www.visitalbuquerque.org/albuquerque/culture-heritage/native-american/pueblos-reservations/">here</a> for a full list. We've included five of the pueblos below. Please note, however, that not all pueblos allow visitors at any time and many have restrictions on photography and video use. Make sure to always check visitor information before visiting a pueblo.</p>
+
+    {% elif placeType.name == 'Museums': %}
+      <p>There are lots of great museums in New Mexico. We've only included a small sampling, but you can see <a href="https://en.wikipedia.org/wiki/List_of_museums_in_New_Mexico">Wikipedia</a> for a good list.</p>
+
+    {% elif placeType.name == 'Shopping spots': %}
+      <p>Nuevo M&eacute;xico focuses primarily on shopping spots where you can buy items that are typically not sold outside of the state. We try to help you find great places to buy New Mexico-specific jewelry, crafts, pottery, art, baskets, collectibles, etc. The state's 19 <a href="http://www.visitalbuquerque.org/albuquerque/culture-heritage/native-american/pueblos-reservations/">pueblos</a> are some of the best places to buy items like this; please note, however, that that not all pueblos allow visitors at any time and many have restrictions on photography and video use. Make sure to always check visitor information before visiting a pueblo.</p>
+    {% endif %}
+  </div>
+</div>
+<!-- END EXTRA INFO FOR SPECIFIC PLACE TYPES -->
+
+
+<!-- MESSAGE FLASHING -->
+<div class="message-flash-row row">
+  <div class="message-flash">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+</div>
+<!-- END MESSAGE FLASHING -->
+
+
+<!-- PLACES LIST -->
+{% for p in places %}
+  {% if p.location != 'Albuquerque area' %}
+    <p class="invisible">Nothing here</p>
+  {% else %}
+    <div class="places-row row">
+      <div class="place-location-group col-xs-11 col-sm-8 col-md-6 ctr-block">
+        <div class="place-location-title">
+          {% for p in places %}
+            {% if p.location == 'Albuquerque area' %}
+              <h3>ALBUQUERQUE AREA</h3>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="place-items">
+          {% for p in places %}
+            {% if p.location == 'Albuquerque area' %}
+              <p class="place-name"><strong><a href="{{ p.link }}">{{ p.name }}</a></strong></p>
+              <p>{{ p.description }} <i>Price: {{ p.price }}</i></p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% for p in places %}
+  {% if p.location != 'Northern New Mexico' %}
+    <p class="invisible">Nothing here</p>
+  {% else %}
+    <div class="places-row row">
+      <div class="place-location-group col-xs-11 col-sm-8 col-md-6 ctr-block">
+        <div class="place-location-title">
+          {% for p in places %}
+            {% if p.location == 'Northern New Mexico' %}
+              <h3>NORTHERN NEW MEXICO</h3>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="place-items">
+          {% for p in places %}
+            {% if p.location == 'Northern New Mexico' %}
+              <p class="place-name"><strong><a href="{{ p.link }}">{{ p.name }}</a></strong></p>
+              <p>{{ p.description }} <i>Price: {{ p.price }}</i></p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% for p in places %}
+  {% if p.location != 'Santa Fe area' %}
+    <p class="invisible">Nothing here</p>
+  {% else %}
+    <div class="places-row row">
+      <div class="place-location-group col-xs-11 col-sm-8 col-md-6 ctr-block">
+        <div class="place-location-title">
+          {% for p in places %}
+            {% if p.location == 'Santa Fe area' %}
+              <h3>SANTA FE AREA</h3>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="place-items">
+          {% for p in places %}
+            {% if p.location == 'Santa Fe area' %}
+              <p class="place-name"><strong><a href="{{ p.link }}">{{ p.name }}</a></strong></p>
+              <p>{{ p.description }} <i>Price: {{ p.price }}</i></p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% for p in places %}
+  {% if p.location != 'Southern New Mexico' %}
+    <p class="invisible">Nothing here</p>
+  {% else %}
+    <div class="places-row row">
+      <div class="place-location-group col-xs-11 col-sm-8 col-md-6 ctr-block">
+        <div class="place-location-title">
+          {% for p in places %}
+            {% if p.location == 'Southern New Mexico' %}
+              <h3>SOUTHERN NEW MEXICO</h3>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="place-items">
+          {% for p in places %}
+            {% if p.location == 'Southern New Mexico' %}
+              <p class="place-name"><strong><a href="{{ p.link }}">{{ p.name }}</a></strong></p>
+              <p>{{ p.description }} <i>Price: {{ p.price }}</i></p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      </div>
+    {% break %}
+  {% endif %}
+{% endfor %}
+<!-- END PLACES LIST -->
+
+
+<!-- BUTTONS -->
+<div class="place-buttons-row row">
+  <div class="place-buttons ctr-block text-center">
+    <p><a href="{{ url_for('showPlaceTypes') }}" class="btn btn-default" role="button" data-toggle="tooltip" title="View a list of all the place types">GO BACK</a></p>
+  </div>
+</div>
+<!-- END BUTTONS -->
+
+{% endblock %}
+
+
+
+<!-- SOURCES -->
+
+<!-- My source for adding the creator picture and caption came from the sample Udacity project's menu.html file. -->
+
+<!-- I had some trouble with the styling for the places list. Forum mentor skh gave me a tip that helped me a lot on this (see: https://discussions.udacity.com/t/conditional-styling-problems/185662). -->

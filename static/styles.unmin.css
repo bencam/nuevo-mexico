@@ -1,0 +1,325 @@
+/*
+*
+* Font icons
+*
+*/
+
+@import url(http://weloveiconfonts.com/api/?family=brandico);
+
+/* fontawesome */
+[class*="brandico-"]:before {
+  font-family: 'brandico', sans-serif;
+  display: inline-block;
+  width: 1.5em;
+}
+
+.social {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+
+
+
+
+/*
+*
+* General
+*
+*/
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Raleway', 'Helvetica', sans-serif;
+  color: #2d3c49;
+}
+
+a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+img {
+  width: 100%;
+}
+
+.ctr-block {
+  margin-right: auto;
+  margin-left: auto;
+  float: none;
+}
+
+.message-flash {
+  background: #405767;
+  width: 50%;
+  margin: auto;
+  color: #eeeeee;
+  text-decoration: none;
+  padding-right: 38px;
+}
+
+.message-flash li {
+  list-style-type: none;
+  text-align: center;
+}
+
+
+
+
+
+
+/*
+*
+* Specific styles
+*
+*/
+
+.welcome-div {
+  margin-top: 30px;
+}
+
+.welcome-header {
+  margin-bottom: 22px;
+}
+
+.get-started {
+  margin-top: 15px;
+}
+
+.welcome-footer {
+  margin-top: 15px;
+}
+
+.login-link {
+  margin-top: 7px;
+  font-size: 16px;
+  padding:8px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'Amatic SC', 'Helvetica', sans-serif;
+  font-size: 50px;
+  margin-top: 18px;
+  margin-bottom: 2px;
+}
+
+h4 {
+  font-family: 'Amatic SC', 'Helvetica', sans-serif;
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+.main-content {
+  margin-top: 20px;
+}
+
+.pick-category {
+  text-align: center;
+}
+
+.place-types {
+  background: #f4f4f4;
+  font-size: 24px;
+  padding: 20px;
+}
+
+.place-types:hover {
+  background: #e0e0e0;
+  padding: 20px;
+}
+
+.new-place-type {
+  margin-top: 25px;
+}
+
+.about-row {
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.about-info {
+  text-align: justify;
+}
+
+footer {
+  margin-bottom: 25px;
+}
+
+
+
+
+
+
+/*
+*
+* Specific styles for places.html and publicPlaces.html
+*
+*/
+
+.placetype-creator-row {
+  background: #405767;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.placetype-name {
+  font-size: 55px;
+  color: #eeeeee;
+  vertical-align: middle;
+}
+
+.creator-img {
+  border-radius: 5px;
+}
+
+.img-caption {
+  margin-bottom: 0px;
+  word-wrap: break-word;
+  color: #eeeeee;
+}
+
+.extra-info {
+  margin-top: 20px;
+  margin-bottom: 23px;
+  font-style: italic;
+  text-align: justify;
+}
+
+.places-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.place-location-group {
+  overflow: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.place-name {
+  padding-top: 18px;
+}
+
+.place-items {
+  text-align: justify;
+}
+
+.ed-del-place {
+  font-style: italic;
+}
+
+.ed-del-place a {
+  text-decoration: underline;
+  color: #4d4d4d;
+}
+
+.place-buttons {
+  margin-top: 21px;
+}
+
+.invisible {
+  display: none;
+}
+
+
+
+
+
+
+/*
+*
+* Buttons
+*
+*/
+
+.green-button {
+  color: green;
+  border-color: green;
+}
+
+.red-button {
+  color: red;
+  border-color: red;
+}
+
+
+
+
+
+
+/*
+*
+* Media queries
+*
+*/
+
+@media only screen and (max-width: 640px) {
+  .img-caption {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .placetype-name {
+    font-size: 40px;
+    padding-top: 20px;
+  }
+}
+
+@media only screen and (min-width: 530px) {
+  .placetype-name {
+    padding-top: 25px;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .placetype-name {
+    padding-top: 45px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .placetype-name {
+    padding-top: 65px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .creator-img-row {
+    width: 25%;
+  }
+}
+
+
+
+
+
+
+/*
+*
+* Sources
+*
+*/
+
+/* I figured out how to center a column in a row from Stack Overflow user koala_dev (http://stackoverflow.com/questions/18153234/center-a-column-using-twitter-bootstrap-3) */
+
+/* I figured out how to hover over a div from Stack Overflow user Ringo (http://stackoverflow.com/questions/17156361/hover-only-working-on-link-not-whole-div) */
+/* And from the Udacity example app */
+/* And from: https://css-tricks.com/snippets/jquery/make-entire-div-clickable/ */
+
+/* I took the styling for the list of place types from the Udacity example app. */

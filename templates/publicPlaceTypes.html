@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="pick-category-row row">
+  <div class="pick-category col-xs-11 col-sm-9 col-md-7 ctr-block">
+    <p>Choose a category below to start learning about the Land of Enchantment</p>
+  </div>
+</div>
+
+<!-- MESSAGE FLASHING -->
+<div class="message-flash-row row">
+  <div class="message-flash">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+</div>
+<!-- END MESSAGE FLASHING -->
+
+
+<!-- PLACE TYPES LIST -->
+{% for placeType in placeTypes %}
+  <a href="{{ url_for('showPlaces', placeType_id = placeType.id) }}">
+    <div class="place-type-row row">
+      <div class="col-md-1"></div>
+        <div class="place-types col-md-10">
+          <h3 class="text-uppercase">{{ placeType.name }}</h3>
+        </div>
+      <div class="col-md-1"></div>
+    </div>
+  </a>
+{% endfor %}
+<!-- END PLACE TYPES LIST -->
+
+
+{% endblock %}

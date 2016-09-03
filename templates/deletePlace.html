@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="action-message-row row">
+  <div class="action-message col-xs-11 col-sm-9 col-md-8 ctr-block">
+    <p>Are you sure you want to delete <strong>{{ place.name }}</strong> from Nuevo M&eacute;xico? If you do wish to delete the item, click the delete button below. Otherwise, click cancel.</p>
+  </div>
+</div>
+
+<div class="action-form-row row">
+  <div class="action-form col-xs-11 col-sm-9 col-md-8 ctr-block">
+    <form action="{{ url_for('delPlace', placeType_id = placeType.id, place_id = place.id) }}" method="POST">
+      <a href="{{ url_for('showPlaces', placeType_id = placeType.id) }}" class="btn btn-default" role="button">CANCEL</a> <button type="submit" class="btn btn-default red-button" role="button">DELETE</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
