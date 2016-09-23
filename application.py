@@ -41,18 +41,18 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-# Create an anti-forgery state token
 @app.route('/login')
 def showLogin():
+    """Create an anti-forgery state token"""
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
                     for x in xrange(32))
     login_session['state'] = state
     return render_template('login.html', STATE=state)
 
 
-# Create a route to login with Google
 @app.route('/gconnect', methods=['POST'])
 def gconnect():
+    """Create a route to login with Google"""
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter'), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -143,10 +143,12 @@ def gconnect():
     return output
 
 
-# Create a Google disconnect route (revoke a current user's
-# token and reset their login session)
 @app.route('/gdisconnect')
 def gdisconnect():
+    """
+    Create a Google disconnect route
+    (revoke a current user's token and reset their login session)
+    """
     access_token = login_session['access_token']
     if access_token is None:
         print 'Access token is None'
@@ -169,9 +171,9 @@ def gdisconnect():
         return response
 
 
-# Create a Facebook login route
 @app.route('/fbconnect', methods=['POST'])
 def fbconnect():
+    """Create a Facebook login route"""
     if request.args.get('state') != login_session['state']:
         response = make_response(json.dumps('Invalid state parameter.'), 401)
         response.headers['Content-Type'] = 'application/json'
@@ -232,9 +234,9 @@ def fbconnect():
     return output
 
 
-# Create a Facebook disconnect route
 @app.route('/fbdisconnect')
 def fbdisconnect():
+    """Create a Facebook disconnect route"""
     facebook_id = login_session['facebook_id']
     # The access token must be included to successfully logout
     access_token = login_session['access_token']
@@ -245,9 +247,9 @@ def fbdisconnect():
     return 'You have been logged out'
 
 
-# Create a disconnect route
 @app.route('/disconnect')
 def disconnect():
+    """Create a disconnect route"""
     if 'provider' in login_session:
         if login_session['provider'] == 'google':
             gdisconnect()
@@ -269,21 +271,21 @@ def disconnect():
         redirect(url_for('showPlaceTypes'))
 
 
-# Create a route to the welcome or home page
 @app.route('/')
 def showHome():
+    """Create a route to the welcome or home page"""
     return render_template('index.html')
 
 
-# Create a route to the about page
 @app.route('/about/')
 def showAbout():
+    """Create a route to the about page"""
     return render_template('about.html')
 
 
-# Create a route to show all types of places to visit
 @app.route('/placetype/')
 def showPlaceTypes():
+    """Create a route to show all types of places to visit"""
     placeTypes = session.query(PlaceType).order_by(asc(PlaceType.name))
     if 'username' not in login_session:
         return render_template('publicPlaceTypes.html',
@@ -293,9 +295,9 @@ def showPlaceTypes():
                                placeTypes=placeTypes)
 
 
-# Create a route for creating a new place type
 @app.route('/placetype/new/', methods=['GET', 'POST'])
 def newPlaceType():
+    """Create a route for creating a new place type"""
     if 'username' not in login_session:
         return redirect('/login')
     if request.method == 'POST':
@@ -309,9 +311,9 @@ def newPlaceType():
         return render_template('newPlaceType.html')
 
 
-# Create a route for editing a place type
 @app.route('/placetype/<int:placeType_id>/edit/', methods=['GET', 'POST'])
 def editPlaceType(placeType_id):
+    """Create a route for editing a place type"""
     editType = session.query(PlaceType).filter_by(id=placeType_id).one()
     if 'username' not in login_session:
         return redirect('/login')
@@ -329,10 +331,10 @@ def editPlaceType(placeType_id):
                                placeType_id=placeType_id, placeType=editType)
 
 
-# Create a route for deleting a place type
 @app.route('/placetype/<int:placeType_id>/delete/',
            methods=['GET', 'POST'])
 def delPlaceType(placeType_id):
+    """Create a route for deleting a place type"""
     delType = session.query(PlaceType).filter_by(id=placeType_id).one()
     if 'username' not in login_session:
         return redirect('/login')
@@ -348,10 +350,10 @@ def delPlaceType(placeType_id):
                                placeType_id=placeType_id, placeType=delType)
 
 
-# Create a route for displaying a list of places within one category
 @app.route('/placetype/<int:placeType_id>/')
 @app.route('/placetype/<int:placeType_id>/place/')
 def showPlaces(placeType_id):
+    """Create a route for displaying a list of places within one category"""
     placeType = session.query(PlaceType).filter_by(id=placeType_id).one()
     creator = getUserInfo(placeType.user_id)
     places = session.query(Place).filter_by(placeType_id=placeType_id).\
@@ -368,10 +370,10 @@ def showPlaces(placeType_id):
                                places=places, creator=creator)
 
 
-# Create a route for creating a new place
 @app.route('/placetype/<int:placeType_id>/place/new/',
            methods=['GET', 'POST'])
 def newPlace(placeType_id):
+    """Create a route for creating a new place"""
     placeType = session.query(PlaceType).filter_by(id=placeType_id).one()
     if 'username' not in login_session:
         return redirect('/login')
@@ -395,10 +397,10 @@ def newPlace(placeType_id):
         return render_template('newPlace.html', placeType=placeType)
 
 
-# Create a route for editing a place
 @app.route('/placetype/<int:placeType_id>/place/<int:place_id>/edit/',
            methods=['GET', 'POST'])
 def editPlace(placeType_id, place_id):
+    """Create a route for editing a place"""
     placeType = session.query(PlaceType).filter_by(id=placeType_id).one()
     editPlaceItem = session.query(Place).filter_by(id=place_id).one()
     if 'username' not in login_session:
@@ -425,10 +427,10 @@ def editPlace(placeType_id, place_id):
                                place=editPlaceItem)
 
 
-# Create a route for deleting a place
 @app.route('/placetype/<int:placeType_id>/place/<int:place_id>/delete/',
            methods=['GET', 'POST'])
 def delPlace(placeType_id, place_id):
+    """Create a route for deleting a place"""
     placeType = session.query(PlaceType).filter_by(id=placeType_id).one()
     delPlaceItem = session.query(Place).filter_by(id=place_id).one()
     if 'username' not in login_session:
@@ -446,32 +448,34 @@ def delPlace(placeType_id, place_id):
 
 
 # Create routes for JSON API endpoints
-# Create an API endpoint for a list of types of places to visit
 @app.route('/placetype/JSON/')
 def showPlaceTypesJSON():
+    """Create an API endpoint for a list of types of places to visit"""
     placeTypes = session.query(PlaceType).order_by(PlaceType.id).all()
     return jsonify(placeTypeList=[p.serialize for p in placeTypes])
 
 
-# Create an API endpoint for a list of places wihtin one place type
 @app.route('/placetype/<int:placeType_id>/place/JSON/')
 def showPlacesJSON(placeType_id):
+    """
+    Create an API endpoint for a list of places wihtin one place type
+    """
     placeType = session.query(PlaceType).filter_by(id=placeType_id).one()
     places = session.query(Place).filter_by(placeType_id=placeType_id).\
         order_by(Place.name).all()
     return jsonify(placesList=[p.serialize for p in places])
 
 
-# Create an API endpoint for an individual place item
 @app.route('/placetype/<int:placeType_id>/place/<int:place_id>/JSON/')
 def showPlaceDetailsJSON(placeType_id, place_id):
+    """Create an API endpoint for an individual place item"""
     place = session.query(Place).filter_by(id=place_id).one()
     return jsonify(placeDetails=place.serialize)
 
 
 # Create helper functions
-# Create createUser function
 def createUser(login_session):
+    """Create createUser function"""
     # Create a new instance of the User class
     newUser = User(
         name=login_session['username'],
@@ -483,14 +487,14 @@ def createUser(login_session):
     return user.id
 
 
-# Create getUserInfo function
 def getUserInfo(user_id):
+    """Create getUserInfo function"""
     user = session.query(User).filter_by(id=user_id).one()
     return user
 
 
-# Create getUserID function
 def getUserID(email):
+    """Create getUserID function"""
     try:
         user = session.query(User).filter_by(email=email).one()
         return user.id
