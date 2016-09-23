@@ -8,8 +8,8 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 
-# Create a Users table
 class User(Base):
+    """Create a Users table"""
     __tablename__ = 'user'
 
     id = Column(Integer, primary_key=True)
@@ -18,8 +18,8 @@ class User(Base):
     picture = Column(String(250))
 
 
-# Create a PlaceType table
 class PlaceType(Base):
+    """Create a PlaceType table"""
     __tablename__ = 'placeType'
 
     id = Column(Integer, primary_key=True)
@@ -37,8 +37,8 @@ class PlaceType(Base):
         }
 
 
-# Createa a Place table
 class Place(Base):
+    """Createa a Place table"""
     __tablename__ = 'place'
 
     id = Column(Integer, primary_key=True)
