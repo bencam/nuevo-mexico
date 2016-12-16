@@ -65,6 +65,11 @@ Access a list of all the place items within a specific place type: http://localh
 Access data for an individual place item: http://localhost:8000/placetype/INSERT_PLACE_TYPE_ID/place/INSERT_PLACE_ID/JSON/
 
 
+## SOURCES
+
+I relied very heavily on a set of Udacity course videos and examples for the code in the application.py, the database_setup.py, and the populator.py files as well as the html files in the templates directory.
+
+
 ## License
 
 Nuevo M&eacute;xico is released under the [MIT License](http://opensource.org/licenses/MIT).
