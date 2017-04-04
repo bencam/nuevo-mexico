@@ -1,5 +1,19 @@
 #!/usr/bin/env python
 
+
+"""
+Use this file if using PostgreSQL for the application.
+
+Note: the default database for the project is SQLite. If using
+PostgreSQL, either (a) the name of this file will need to be changed
+to database_setup.py (and therefore the original database_setup.py file
+will need to be renamed, moved to another directory, or deleted) or
+(b) the import lines for the database_setup file in application.py and
+populator.py will need to be changed to database_setup_postgres.
+
+"""
+
+
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
