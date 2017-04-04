@@ -506,11 +506,3 @@ if __name__ == '__main__':
     app.secret_key = '12345'
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
-
-
-# SOURCES
-
-# This should probably go without saying, but I relied very (very!) heavily
-# on the related Udacity videos and examples for the code in this script
-# as well as the html files in the templates directory, the database_setup.py
-# file and the populator.py file.
