@@ -38,7 +38,7 @@ class PlaceType(Base):
 
 
 class Place(Base):
-    """Createa a Place table"""
+    """Create a Place table"""
     __tablename__ = 'place'
 
     id = Column(Integer, primary_key=True)
