@@ -187,17 +187,26 @@ def fbconnect():
             'r').read())['web']['app_id']
     app_secret = json.loads(open('fb_client_secrets.json', 'r').read())[
         'web']['app_secret']
-    url = 'https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=%s&client_secret=%s&fb_exchange_token=%s' % (  # noqa
-        app_id, app_secret, access_token)
+    # url = 'https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=%s&client_secret=%s&fb_exchange_token=%s' % (  # noqa
+        # app_id, app_secret, access_token)
+    url = ('https://graph.facebook.com/v2.8/oauth/access_token?'
+           'grant_type=fb_exchange_token&client_id=%s&client_secret=%s'
+           '&fb_exchange_token=%s') % (app_id, app_secret, access_token)     # Line added to make new fb login version work
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
+    data = json.loads(result)    # Line added to make new fb login version work
 
+    # Extract the access token from the response
+    token = 'access_token=' + data['access_token']  # Line added to make new fb login version work
+
+    # Not needed with new fb login version
     # Use token to get user info from API
-    userinfo_url = 'https://graph.facebook.com/v2.4/me'
+    # userinfo_url = 'https://graph.facebook.com/v2.4/me'
     # Strip expire tag from access token
-    token = result.split('&')[0]
+    # token = result.split('&')[0]
 
-    url = 'https://graph.facebook.com/v2.4/me?%s&fields=name,id,email' % token
+    # url = 'https://graph.facebook.com/v2.4/me?%s&fields=name,id,email' % token
+    url = 'https://graph.facebook.com/v2.8/me?%s&fields=name,id,email' % token    # Line added to make new fb login version work
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
     data = json.loads(result)
