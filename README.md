@@ -71,7 +71,7 @@ Access data for an individual place item: http://localhost:8000/placetype/INSERT
 
 ## SOURCES
 
-I relied very heavily on a set of Udacity course videos and examples for the code in the application.py, the database_setup.py, and the populator.py files as well as the html files in the templates directory.
+I relied very heavily on a set of Udacity course videos and examples for the code in the application.py, the database_setup.py, and the populator.py files as well as the html files in the templates directory. I also relied on the Udacity forums (see [here](https://discussions.udacity.com/t/conditional-styling-problems/185662) for example).
 
 
 ## License
