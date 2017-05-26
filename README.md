@@ -33,7 +33,11 @@ The first step to running Nuevo M&eacute;xico is to set up the database. To do t
 
 This will create an SQLite database in the working directory called nuevomexico.db.
 
-Note: the repository includes a file called database_setup_postgres.py. Use this file for creating a PostgeSQL database. If using PostgreSQL, either (a) the name of the database_setup_postgres.py file will need to be changed to database_setup.py (and therefore the original database_setup.py file will need to be renamed, moved to another directory, or deleted) or (b) the import lines for the database_setup file in application.py and populator.py will need to be changed to database_setup_postgres.
+    Note: the repository includes a file called database_setup_postgres.py. Use this file for creating a PostgeSQL database. If using PostgreSQL, either (a) the name of the database_setup_postgres.py file will need to be changed to database_setup.py (and therefore the original database_setup.py file will need to be renamed, moved to another directory, or deleted) or (b) the import lines for the database_setup file in application.py and populator.py will need to be changed to database_setup_postgres.
+
+    Replace line 38 in application.py, line 85 in database_setup_postgres.py, and line 7 in populator.py with the following:
+
+    engine = create_engine('postgresql://catalog:INSERT_PASSWORD_FOR_DATABASE_HERE@localhost/catalog')
 
 Next, populate the database by running the populator.py file.
 
