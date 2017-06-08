@@ -1,6 +1,6 @@
 # Nuevo M&eacute;xico
 
-Nuevo M&eacute;xico is a simple RESTful web application. Use it to learn more about New Mexico.
+Nuevo M&eacute;xico is a simple RESTful web application. Use it to learn more about New Mexico. View a live version of it [here](http://34.207.77.81/).
 
 
 ## Details
