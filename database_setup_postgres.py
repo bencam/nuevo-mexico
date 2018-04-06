@@ -11,6 +11,12 @@ will need to be renamed, moved to another directory, or deleted) or
 (b) the import lines for the database_setup file in application.py and
 populator.py will need to be changed to database_setup_postgres.
 
+Another change is also required to run Nuevo México with PostgreSQL.
+Replace line 38 in application.py, line 85 in database_setup_postgres.py,
+and line 7 in populator.py with the following:
+
+engine = create_engine('postgresql://catalog:INSERT_PASSWORD_FOR_DATABASE_HERE@localhost/catalog')
+
 """
 
 
